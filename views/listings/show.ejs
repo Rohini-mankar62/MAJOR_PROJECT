@@ -3,307 +3,129 @@
 <div class="row mt-3">
 
     <!-- LISTING TITLE -->
-    <div class="col-8 offset-2">
-        <h3>
-            <%= listing.title %>
-        </h3>
+    <div class="col-12 col-md-8 offset-md-2">
+        <h3><%= listing.title %></h3>
     </div>
 
-
     <!-- LISTING CARD -->
-    <div class="card col-6 offset-2 show-card listing-card">
+    <div class="col-12 col-md-8 offset-md-2">
+        <div class="card show-card listing-card">
+            <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
 
-        <img src="<%= listing.image.url %>"
-             class="card-img-top show-img"
-             alt="listing_image">
-
-        <div class="card-body">
-
-            <!-- OWNER -->
-            <p class="card-text">
-                Owned by
-                <i>
-                    <%= listing.owner.username %>
-                </i>
-            </p>
-
-            <!-- DESCRIPTION -->
-            <p class="card-text">
-                <%= listing.description %>
-            </p>
-
-            <!-- PRICE -->
-            <p class="card-text">
-                &#8377;
-                <%= listing.price
-                    ? listing.price.toLocaleString("en-IN")
-                    : "Price not available" %>
-            </p>
-
-            <!-- LOCATION -->
-            <p class="card-text">
-                <%= listing.location %>
-            </p>
-
-            <!-- COUNTRY -->
-            <p class="card-text">
-                <%= listing.country %>
-            </p>
-
+            <div class="card-body px-0 px-md-3">
+                <p class="card-text">
+                    Owned by <i><%= listing.owner.username %></i>
+                </p>
+                <p class="card-text">
+                    <%= listing.description %>
+                </p>
+                <p class="card-text">
+                    &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>
+                </p>
+                <p class="card-text">
+                    <%= listing.location %>
+                </p>
+                <p class="card-text">
+                    <%= listing.country %>
+                </p>
+            </div>
         </div>
 
-        <br>
-
-
         <!-- EDIT & DELETE LISTING -->
-
-        <% if(currUser && listing.owner &&
-            listing.owner._id.equals(currUser._id)) { %>
-
-            <div class="btns">
-
-                <a href="/listings/<%= listing._id %>/edit"
-                   class="btn btn-dark offset-3 edit-btn">
+        <% if(currUser && listing.owner && listing.owner._id.equals(currUser._id)) { %>
+            <div class="btns mb-3 d-flex gap-2">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn">
                     Edit
                 </a>
-
-                <form method="POST"
-                      action="/listings/<%= listing._id %>?_method=DELETE">
-
-                    <button class="btn btn-dark offset-5"
-                            type="submit">
+                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                    <button class="btn btn-dark" type="submit">
                         Delete
                     </button>
-
                 </form>
-
             </div>
-
         <% } %>
+    </div>
 
-
-        <!-- REVIEW SECTION -->
-
-        <div class="col-12 mb-3">
-
+    <!-- REVIEWS SECTION -->
+    <div class="col-12 col-md-8 offset-md-2 mb-3">
+        <div class="reviews-section">
             <% if (currUser) { %>
-
                 <hr>
-
                 <h4>Leave a Review</h4>
-
-                <form action="/listings/<%= listing.id %>/reviews"
-                      method="post"
-                      novalidate
-                      class="needs-validation">
-
-                    <!-- STARABILITY RATING -->
-
+                <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
                     <div class="mb-3 mt-3">
-
-                        <label for="rating" class="form-label">
-                            Rating
-                        </label>
-
+                        <label for="rating" class="form-label">Rating</label>
                         <fieldset class="starability-slot">
-
-                            <input type="radio"
-                                   id="no-rate"
-                                   class="input-no-rate"
-                                   name="review[rating]"
-                                   value="1"
-                                   checked
-                                   aria-label="No rating." />
-
-                            <input type="radio"
-                                   id="first-rate1"
-                                   name="review[rating]"
-                                   value="1" />
-
-                            <label for="first-rate1"
-                                   title="Terrible">
-                                1 star
-                            </label>
-
-
-                            <input type="radio"
-                                   id="first-rate2"
-                                   name="review[rating]"
-                                   value="2" />
-
-                            <label for="first-rate2"
-                                   title="Not good">
-                                2 stars
-                            </label>
-
-
-                            <input type="radio"
-                                   id="first-rate3"
-                                   name="review[rating]"
-                                   value="3" />
-
-                            <label for="first-rate3"
-                                   title="Average">
-                                3 stars
-                            </label>
-
-
-                            <input type="radio"
-                                   id="first-rate4"
-                                   name="review[rating]"
-                                   value="4" />
-
-                            <label for="first-rate4"
-                                   title="Very good">
-                                4 stars
-                            </label>
-
-
-                            <input type="radio"
-                                   id="first-rate5"
-                                   name="review[rating]"
-                                   value="5" />
-
-                            <label for="first-rate5"
-                                   title="Amazing">
-                                5 stars
-                            </label>
-
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
                         </fieldset>
-
                     </div>
-
-
-                    <!-- COMMENT -->
-
                     <div class="mb-3 mt-3">
-
-                        <label for="comment"
-                               class="form-label">
-                            Comment
-                        </label>
-
-                        <textarea name="review[comment]"
-                                  id="comment"
-                                  cols="30"
-                                  rows="5"
-                                  class="form-control"
-                                  required></textarea>
-
+                        <label for="comment" class="form-label">Comment</label>
+                        <textarea name="review[comment]" id="comment" rows="5" class="form-control" required></textarea>
                         <div class="invalid-feedback">
                             Please add some comments for review
                         </div>
-
                     </div>
-
-
-                    <!-- SUBMIT -->
-
-                    <button class="btn btn-outline-dark">
-                        Submit
-                    </button>
-
+                    <button class="btn btn-outline-dark">Submit</button>
                 </form>
-
             <% } %>
 
-
-            <!-- ALL REVIEWS -->
-
             <% if(listing.reviews.length) { %>
+                <hr>
+                <div class="reviews-title">
+                    <b>All Reviews</b>
+                </div>
 
-                <div class="row mt-4">
-
-                    <p>
-                        <b>All Reviews</b>
-                    </p>
-
-
+                <div class="reviews-list">
                     <% for (let review of listing.reviews) { %>
-
-                        <div class="card col-5 ms-4 mb-3">
-
+                        <div class="review-card">
                             <div class="card-body">
-
-                                <!-- REVIEW AUTHOR -->
-
                                 <h5 class="card-title">
                                     @<%= review.author.username %>
                                 </h5>
-
-
-                                <!-- STARABILITY RESULT -->
-
-                                <p class="starability-result card-text"
-                                   data-rating="<%= review.rating %>">
-                                </p>
-
-
-                                <!-- REVIEW COMMENT -->
-
+                                <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
                                 <p class="card-text">
                                     <%= review.comment %>
                                 </p>
 
-
-                                <!-- DELETE REVIEW -->
-
-                                <% if(currUser &&
-                                      review.author &&
-                                      review.author._id.equals(currUser._id)) { %>
-
-                                    <form class="mb-3"
-                                          method="POST"
-                                          action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-
-                                        <button class="btn btn-sm btn-dark">
-                                            Delete
-                                        </button>
-
+                                <% if(currUser && review.author && review.author._id.equals(currUser._id)) { %>
+                                    <form class="mb-1 mt-2" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                        <button class="btn btn-sm btn-dark">Delete</button>
                                     </form>
-
                                 <% } %>
-
                             </div>
-
                         </div>
-
                     <% } %>
-
                 </div>
-
             <% } %>
-
         </div>
-
     </div>
- 
 
-    <div class="col-8 offset-2 mb-3 map-section">
-
+    <!-- MAP SECTION -->
+    <div class="col-12 col-md-8 offset-md-2 mb-3 map-section">
         <h3>Where you'll be</h3>
-
         <div id="map"></div>
-
     </div>
 
 </div>
 
-
-
 <!-- MAP JAVASCRIPT -->
-
 <script>
+    const locationName = "<%= listing.location %>, <%= listing.country %>";
 
-    const locationName =
-        "<%= listing.location %>, <%= listing.country %>";
-
-    fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationName)}`
-    )
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationName)}`)
     .then(response => response.json())
     .then(data => {
-
         if (data.length === 0) {
             console.log("Location not found");
             return;
@@ -312,33 +134,20 @@
         const latitude = data[0].lat;
         const longitude = data[0].lon;
 
-        // Create map
-        const map = L.map("map").setView(
-            [latitude, longitude],
-            13
-        );
+        const map = L.map("map").setView([latitude, longitude], 13);
 
-        // OpenStreetMap
-        L.tileLayer(
-            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            {
-                attribution: "&copy; OpenStreetMap contributors"
-            }
-        ).addTo(map);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
 
-        // Marker
-        const marker = L.marker([latitude, longitude])
-            .addTo(map);
+        const marker = L.marker([latitude, longitude]).addTo(map);
 
-        // Popup
-       marker.bindPopup(`
-    <b>${locationName}</b><br>
-    Exact Location provided after Booking!
-`);
-
+        marker.bindPopup(`
+            <b>${locationName}</b><br>
+            Exact Location provided after Booking!
+        `);
     })
     .catch(error => {
         console.log("Map error:", error);
     });
-
 </script>

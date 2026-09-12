@@ -1,42 +1,166 @@
 <% layout("/layout/boilerplate") -%>
 
-    <style>
+<style>
+    /* =========================
+       FILTERS
+    ========================= */
+
+   #filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter {
+    text-align: center;
+    margin-right: 0.8rem;
+    margin-top: 1.5rem;
+    opacity: 0.7;
+}
+
+.tax-toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+    .filter p {
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+        margin-bottom: 0;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    /* =========================
+       TAX TOGGLE
+    ========================= */
+
+    .tax-info {
+        display: none;
+    }
+
+    /* .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        min-height: 2.5rem;
+        padding: 0.5rem 1rem;
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    } */
+
+
+    /* =========================
+       LISTING IMAGE
+    ========================= */
+
+    .listing-card .card-img-top {
+        height: 20rem !important;
+        object-fit: cover;
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 992px) {
+
+        .filter {
+            margin-right: 1.2rem;
+        }
+
+        .tax-toggle {
+            margin-left: 0.5rem;
+        }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 768px) {
+
         #filters {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
         }
 
         .filter {
-            text-align: center;
-            margin-right: 2rem;
-            margin-top: 2rem;
-            opacity: 0.7;
+            margin-right: 0.5rem;
+            margin-top: 1.2rem;
+            min-width: 65px;
         }
 
         .filter p {
+            font-size: 0.7rem;
+        }
+
+        .tax-toggle {
+            margin: 1rem auto 0;
+            width: fit-content;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .listing-card .card-img-top {
+            height: 18rem !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+    #filters {
+        flex-wrap: nowrap;
+    }
+
+    .tax-toggle {
+        margin-left: auto;
+    }
+}
+
+
+    /* =========================
+       SMALL MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        #filters {
+            justify-content: space-around;
+        }
+
+        .filter {
+            margin-right: 0;
+            min-width: 60px;
+        }
+
+        .filter p {
+            font-size: 0.65rem;
+        }
+
+        .tax-toggle {
+            width: 100%;
+            justify-content: center;
+            margin: 1rem 0 0;
             font-size: 0.8rem;
         }
 
-        .filter:hover {
-            opacity: 1;
-            cursor: pointer;
+        .listing-card .card-img-top {
+            height: 16rem !important;
         }
-
-        .tax-info {
-            display: none;
-        }
-
-        .tax-toggle{
-            border: 1px solid black;
-            border-radius: 1rem;
-            height: 2.5rem;
-            padding: 1rem;
-            margin-left: 2rem;
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    }
+</style>
     <!-- <h3>All Listings</h3> -->
     <div id="filters">
         <div class="filter">

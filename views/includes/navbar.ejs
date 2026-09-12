@@ -1,1425 +1,609 @@
 <style>
-  .search-bar {
+.search-bar {
     width: 700px;
     height: 66px;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 40px;
-
     display: flex;
     align-items: center;
-
     padding: 5px 7px 5px 25px;
-
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     margin: 0 auto;
-  }
-  .search-section {
+}
+.search-section {
     height: 42px;
-
     display: flex;
     align-items: center;
-
     padding: 0 25px;
-
     border-right: 1px solid #ddd;
-  }
-
-  .where-section {
+}
+.where-section {
     width: 250px;
     padding-left: 5px;
-  }
-
-  .when-section {
+}
+.when-section {
     width: 200px;
-  }
-
-  .who-section {
+}
+.who-section {
     width: 170px;
     border-right: none;
-  }
-
-  .search-option {
+}
+.search-option {
     border: none;
     background: transparent;
-
     padding: 0;
-
     text-align: left;
-
     width: 100%;
-
     cursor: pointer;
-  }
-
-
-  .search-option:hover {
+}
+.search-option:hover {
     background-color: transparent;
-  }
-
-  .search-option::after {
+}
+.search-option::after {
     display: none !important;
-  }
-
-
-
-  .search-option strong {
+}
+.search-option strong {
     display: block;
-
     font-size: 13px;
     font-weight: 600;
-
     color: #222;
-
     margin-bottom: 3px;
-  }
-
-  .search-option span {
+}
+.search-option span {
     display: block;
-
     font-size: 14px;
-
     color: #777;
-
     white-space: nowrap;
-  }
-
-  .search-circle {
+}
+.search-circle {
     width: 48px;
     height: 48px;
-
     min-width: 48px;
-
     border: none;
-
     border-radius: 50%;
-
     background-color: #fe424d;
-
     color: white;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     font-size: 17px;
-
     cursor: pointer;
-
     margin-left: auto;
-  }
-
-
-  .search-circle:hover {
+}
+.search-circle:hover {
     background-color: #e8313d;
-
     color: white;
-  }
-
-
-  .destination-dropdown {
+}
+.destination-dropdown {
     width: 390px;
-
     border: none;
-
     border-radius: 20px;
-
     padding: 18px 10px;
-
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
-
+    box-shadow: 0 5px 25px rgba(0,0,0,0.18);
     margin-top: 12px !important;
-  }
-  .suggested-title {
+}
+.suggested-title {
     font-size: 13px;
-
     color: #555;
-
     padding: 5px 15px 10px;
-
     margin: 0;
-  }
-
-  .destination-item {
+}
+.destination-item {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
     padding: 9px 10px;
-
     border-radius: 12px;
-
     cursor: pointer;
-  }
-
-
-  .destination-item:hover {
+}
+.destination-item:hover {
     background-color: #f7f7f7;
-  }
-
-
-  .destination-icon {
+}
+.destination-icon {
     width: 55px;
     height: 55px;
-
     border-radius: 12px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     font-size: 22px;
-
     flex-shrink: 0;
-  }
-
-
-  .nearby {
+}
+.nearby {
     background-color: #edf5fc;
-
     color: #5596d5;
-  }
-
-
-  .goa {
+}
+.goa {
     background-color: #faf5ed;
-
     color: #c59a5a;
-  }
-
-
-
-  .lonavala {
+}
+.lonavala {
     background-color: #fff0f3;
-
     color: #ff5a73;
-  }
-
-
-  /* Pune */
-
-  .pune {
+}
+.pune {
     background-color: #f1f1f1;
-
     color: #999;
-  }
-
-
-  /* South Goa */
-
-  .south-goa {
+}
+.south-goa {
     background-color: #eef7f0;
-
     color: #229044;
-  }
-
-
-  /* Mumbai */
-
-  .mumbai {
+}
+.mumbai {
     background-color: #eef7f0;
-
     color: #229044;
-  }
-
-
-  /* Nagpur */
-
-  .nagpur {
+}
+.nagpur {
     background-color: #edf5fc;
-
     color: green;
-  }
-
-
-  /* =========================================
-     DESTINATION TEXT
-  ========================================= */
-
-  .destination-text strong {
+}
+.destination-text strong {
     display: block;
-
     font-size: 14px;
-
     color: #333;
-  }
-
-
-  .destination-text small {
+}
+.destination-text small {
     display: block;
-
     font-size: 13px;
-
     color: #777;
-
     margin-top: 3px;
-  }
-
-
-  /* =========================================
-     NAVBAR
-  ========================================= */
-
-  .navbar {
+}
+.navbar {
     min-height: 80px;
-  }
-
-
-  /* =========================================
-     RESPONSIVE
-  ========================================= */
-
-  @media (max-width: 1200px) {
-
-    .search-bar {
-      width: 600px;
-    }
-
-    .where-section {
-      width: 210px;
-    }
-
-    .when-section {
-      width: 170px;
-    }
-
-    .who-section {
-      width: 140px;
-    }
-
-  }
-
-
-  @media (max-width: 992px) {
-
-    .search-bar {
-      width: 100%;
-
-      margin: 15px 0;
-    }
-
-  }
-
-
-  @media (max-width: 768px) {
-
-    .search-bar {
-
-      width: 100%;
-
-      height: auto;
-
-      border-radius: 20px;
-
-      flex-direction: column;
-
-      align-items: stretch;
-
-      padding: 15px;
-    }
-
-
-    .search-section {
-
-      width: 100% !important;
-
-      height: 55px;
-
-      padding: 10px 5px;
-
-      border-right: none;
-
-      border-bottom: 1px solid #ddd;
-    }
-
-
-    .who-section {
-
-      border-bottom: none;
-    }
-
-
-    .search-circle {
-
-      margin: 10px 0 0 auto;
-    }
-
-  }
-
-  /* =========================================
-   GUEST DROPDOWN
-========================================= */
-
+}
+.mobile-menu {
+    display: none;
+}
 .guest-dropdown {
     width: 400px;
-
     background-color: white;
-
     border: none;
-
     border-radius: 20px;
-
     padding: 15px 25px;
-
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
-
+    box-shadow: 0 5px 25px rgba(0,0,0,0.18);
     margin-top: 12px !important;
-
     position: relative;
 }
-
-
 .guest-close {
     position: absolute;
-
     top: 15px;
     right: 18px;
-
     border: none;
-
     background: transparent;
-
     font-size: 22px;
-
     color: #333;
-
     cursor: pointer;
-
     width: 30px;
     height: 30px;
-
     border-radius: 50%;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
 }
-
 .guest-close:hover {
     background-color: #f5f5f5;
 }
-
-
-
 .guest-row {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 20px 0;
-
     border-bottom: 1px solid #eee;
 }
-
 .guest-row.last-row {
     border-bottom: none;
 }
-
-
-
-
 .guest-info strong {
     display: block;
-
     font-size: 16px;
-
     font-weight: 500;
-
     color: #222;
-
     margin-bottom: 3px;
 }
-
-
 .guest-info small {
     display: block;
-
     font-size: 14px;
-
     color: #777;
 }
-
-
-/* Service animal text */
-
 .service-animal {
     text-decoration: underline;
-
     font-weight: 500;
 }
-
-
-/* =========================================
-   COUNTER
-========================================= */
-
 .guest-counter {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
 }
-
-
-/* Counter number */
-
 .guest-counter span {
     width: 20px;
-
     text-align: center;
-
     font-size: 15px;
-
     color: #333;
 }
-
-
-/* =========================================
-   PLUS / MINUS BUTTON
-========================================= */
-
 .counter-btn {
     width: 32px;
     height: 32px;
-
     border-radius: 50%;
-
     border: none;
-
     background-color: #f3f3f3;
-
     color: #333;
-
     font-size: 20px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
-
-
 .counter-btn:hover {
     background-color: #e8e8e8;
 }
-
-
 .counter-btn:active {
     transform: scale(0.95);
 }
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 768px) {
-
+@media (max-width:1200px) {
+    .search-bar {
+        width: 600px;
+    }
+    .where-section {
+        width: 210px;
+    }
+    .when-section {
+        width: 170px;
+    }
+    .who-section {
+        width: 140px;
+    }
+}
+@media (max-width:768px) {
+    .navbar {
+        min-height: 58px !important;
+        height: auto !important;
+        padding: 5px 0 !important;
+    }
+    .navbar .container-fluid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        padding: 0 12px !important;
+    }
+    .navbar-brand {
+        margin-right: auto !important;
+        padding: 0 !important;
+    }
+    .navbar-brand .fa-compass {
+        font-size: 1.5rem;
+    }
+    .navbar-toggler {
+        display: block !important;
+        margin-left: auto !important;
+        padding: 5px 8px !important;
+        border: 2px solid #777 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+    }
+    #desktopExplore {
+        display: none !important;
+    }
+    #desktopSearch {
+        display: none !important;
+    }
+    #desktopRight {
+        display: none !important;
+    }
+    .mobile-menu {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        margin-top: 8px !important;
+        padding: 5px 0 10px !important;
+    }
+    .mobile-menu.collapse:not(.show) {
+        display: none !important;
+    }
+    .mobile-menu.collapse.show {
+        display: block !important;
+    }
+    .mobile-menu ul {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .mobile-menu .nav-item {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 2px 0 !important;
+    }
+    .mobile-menu .nav-link {
+        display: block !important;
+        width: 100% !important;
+        padding: 4px 0 !important;
+        text-align: center !important;
+        font-size: 14px !important;
+        color: #222 !important;
+    }
+    .destination-dropdown {
+        width: 300px;
+        max-width: 90vw;
+    }
     .guest-dropdown {
         width: 330px;
-
         max-width: 90vw;
-
         padding: 15px 20px;
     }
-
+}
+@media (max-width:480px) {
+    .navbar-brand .fa-compass {
+        font-size: 1.4rem;
+    }
+    .navbar-toggler {
+        padding: 4px 7px !important;
+    }
+    .mobile-menu .nav-link {
+        font-size: 13px !important;
+    }
 }
 </style>
-
-
-<!-- =========================================
-     NAVBAR
-========================================= -->
-
 <nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
-
-  <div class="container-fluid">
-
-
-    <!-- =====================================
-         LOGO
-    ====================================== -->
-
-    <a
-      class="navbar-brand"
-      href="/listings">
-
-      <i class="fa-solid fa-compass"></i>
-
-    </a>
-
-
-    <!-- =====================================
-         MOBILE TOGGLE
-    ====================================== -->
-
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-
-      <span class="navbar-toggler-icon"></span>
-
-    </button>
-
-
-    <!-- =====================================
-         EXPLORE
-    ====================================== -->
-
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNav">
-
-      <ul class="navbar-nav">
-
-        <li class="nav-item">
-
-          <a
-            class="nav-link"
-            href="/listings">
-
-            Explore
-
-          </a>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <!-- =====================================
-         SEARCH BAR
-    ====================================== -->
-
-    <div class="navbar-nav flex-grow-1 justify-content-center">
-
-      <form class="search-bar">
-
-
-        <!-- =================================
-             WHERE
-        ================================== -->
-
-        <div class="search-section where-section dropdown">
-
-          <button
-            type="button"
-            class="search-option dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false">
-
-            <strong>Where</strong>
-
-            <span>
-              Search destinations
-            </span>
-
-          </button>
-
-
-          <!-- WHERE DROPDOWN -->
-
-          <ul class="dropdown-menu destination-dropdown">
-
-
-            <!-- Title -->
-
-            <li>
-
-              <p class="suggested-title">
-
-                Suggested destinations
-
-              </p>
-
-            </li>
-
-
-            <!-- ============================
-                 NEARBY
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon nearby">
-
-                  <i class="fa-solid fa-location-arrow"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Nearby
-                  </strong>
-
-                  <small>
-                    Find what's around you
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 NORTH GOA
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon goa">
-
-                  <i class="fa-solid fa-umbrella-beach"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    North Goa, Goa
-                  </strong>
-
-                  <small>
-                    Popular beach destination
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 LONAVALA
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon lonavala">
-
-                  <i class="fa-solid fa-house"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Lonavala, Maharashtra
-                  </strong>
-
-                  <small>
-                    For sights like Karla Caves
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 PUNE
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon pune">
-
-                  <i class="fa-solid fa-city"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Pune City, Maharashtra
-                  </strong>
-
-                  <small>
-                    Near you
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 SOUTH GOA
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon south-goa">
-
-                  <i class="fa-solid fa-umbrella-beach"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    South Goa, Goa
-                  </strong>
-
-                  <small>
-                    For nature lovers
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 MUMBAI
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon mumbai">
-
-                  <i class="fa-solid fa-city"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Mumbai, Maharashtra
-                  </strong>
-
-                  <small>
-                    For its top-notch dining
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 NAGPUR
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon nagpur">
-
-                  <i class="fa-solid fa-city"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Nagpur, Maharashtra
-                  </strong>
-
-                  <small>
-                    A hidden gem
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-            <!-- ============================
-                 PALOLEM BEACH
-            ============================= -->
-
-            <li>
-
-              <div class="destination-item">
-
-                <div class="destination-icon goa">
-
-                  <i class="fa-solid fa-umbrella-beach"></i>
-
-                </div>
-
-
-                <div class="destination-text">
-
-                  <strong>
-                    Palolem Beach, Goa
-                  </strong>
-
-                  <small>
-                    Off the beaten path
-                  </small>
-
-                </div>
-
-              </div>
-
-            </li>
-
-
-          </ul>
-
-        </div>
-
-
-        <!-- =================================
-             WHEN
-        ================================== -->
-
-        <div class="search-section when-section">
-
-          <button
-            type="button"
-            class="search-option">
-
-            <strong>
-              When
-            </strong>
-
-            <span>
-              Add dates
-            </span>
-
-          </button>
-
-        </div>
-
-       <!-- ================= WHO ================= -->
-
-<div class="search-section who-section dropdown">
-
-    <button
-        type="button"
-        class="search-option dropdown-toggle"
-        id="guestDropdown"
-        data-bs-toggle="dropdown"
-        data-bs-auto-close="outside"
-        aria-expanded="false">
-
-        <strong>Who</strong>
-
-        <span id="guestSummary" input data-type="number">7 guests</span>
-
-    </button>
-
-
-    <!-- ================= GUEST DROPDOWN ================= -->
-
-    <div
-        class="dropdown-menu guest-dropdown"
-        aria-labelledby="guestDropdown">
-
-
-        <!-- CLOSE BUTTON -->
-
-        <button
-            type="button"
-            class="guest-close"
-            id="guestClose" input data-type="number">
-
-            ×
-
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-solid fa-compass"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-
-
-        <!-- ================= ADULTS ================= -->
-
-        <div class="guest-row">
-
-            <div class="guest-info" input data-type="number">
-
-                <strong>Adults</strong>
-
-                <small>
-                    Ages 13 or above
-                </small>
-
-            </div>
-
-
-            <div class="guest-counter">
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="adults"
-                    data-action="minus">
-
-                    −
-
-                </button>
-
-
-                <span id="adultsCount">
-                    7
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="adults"
-                    data-action="plus">
-
-                    +
-
-                </button>
-
-            </div>
-
+        <div id="desktopExplore" class="navbar-nav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings">Explore</a>
+                </li>
+            </ul>
         </div>
-
-
-        <!-- ================= CHILDREN ================= -->
-
-        <div class="guest-row">
-
-            <div class="guest-info">
-
-                <strong>Children</strong>
-
-                <small>
-                    Ages 2–12
-                </small>
-
-            </div>
-
-
-            <div class="guest-counter">
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="children"
-                    data-action="minus">
-
-                    −
-
+        <div id="desktopSearch" class="navbar-nav flex-grow-1 justify-content-center">
+            <form class="search-bar">
+                <div class="search-section where-section dropdown">
+                    <button type="button" class="search-option dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <strong>Where</strong>
+                        <span>Search destinations</span>
+                    </button>
+                    <ul class="dropdown-menu destination-dropdown">
+                        <li><p class="suggested-title">Suggested destinations</p></li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon nearby"><i class="fa-solid fa-location-arrow"></i></div>
+                                <div class="destination-text">
+                                    <strong>Nearby</strong>
+                                    <small>Find what's around you</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon goa"><i class="fa-solid fa-umbrella-beach"></i></div>
+                                <div class="destination-text">
+                                    <strong>North Goa, Goa</strong>
+                                    <small>Popular beach destination</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon lonavala"><i class="fa-solid fa-house"></i></div>
+                                <div class="destination-text">
+                                    <strong>Lonavala, Maharashtra</strong>
+                                    <small>For sights like Karla Caves</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon pune"><i class="fa-solid fa-city"></i></div>
+                                <div class="destination-text">
+                                    <strong>Pune City, Maharashtra</strong>
+                                    <small>Near you</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon south-goa"><i class="fa-solid fa-umbrella-beach"></i></div>
+                                <div class="destination-text">
+                                    <strong>South Goa, Goa</strong>
+                                    <small>For nature lovers</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon mumbai"><i class="fa-solid fa-city"></i></div>
+                                <div class="destination-text">
+                                    <strong>Mumbai, Maharashtra</strong>
+                                    <small>For its top-notch dining</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon nagpur"><i class="fa-solid fa-city"></i></div>
+                                <div class="destination-text">
+                                    <strong>Nagpur, Maharashtra</strong>
+                                    <small>A hidden gem</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="destination-item">
+                                <div class="destination-icon goa"><i class="fa-solid fa-umbrella-beach"></i></div>
+                                <div class="destination-text">
+                                    <strong>Palolem Beach, Goa</strong>
+                                    <small>Off the beaten path</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="search-section when-section">
+                    <button type="button" class="search-option">
+                        <strong>When</strong>
+                        <span>Add dates</span>
+                    </button>
+                </div>
+                <div class="search-section who-section dropdown">
+                    <button type="button" class="search-option dropdown-toggle" id="guestDropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <strong>Who</strong>
+                        <span id="guestSummary">7 guests</span>
+                    </button>
+                    <div class="dropdown-menu guest-dropdown" aria-labelledby="guestDropdown">
+                        <button type="button" class="guest-close" id="guestClose">×</button>
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <strong>Adults</strong>
+                                <small>Ages 13 or above</small>
+                            </div>
+                            <div class="guest-counter">
+                                <button type="button" class="counter-btn" data-type="adults" data-action="minus">−</button>
+                                <span id="adultsCount">7</span>
+                                <button type="button" class="counter-btn" data-type="adults" data-action="plus">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <strong>Children</strong>
+                                <small>Ages 2–12</small>
+                            </div>
+                            <div class="guest-counter">
+                                <button type="button" class="counter-btn" data-type="children" data-action="minus">−</button>
+                                <span id="childrenCount">0</span>
+                                <button type="button" class="counter-btn" data-type="children" data-action="plus">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row">
+                            <div class="guest-info">
+                                <strong>Infants</strong>
+                                <small>Under 2</small>
+                            </div>
+                            <div class="guest-counter">
+                                <button type="button" class="counter-btn" data-type="infants" data-action="minus">−</button>
+                                <span id="infantsCount">0</span>
+                                <button type="button" class="counter-btn" data-type="infants" data-action="plus">+</button>
+                            </div>
+                        </div>
+                        <div class="guest-row last-row">
+                            <div class="guest-info">
+                                <strong>Pets</strong>
+                                <small class="service-animal">Bringing a service animal?</small>
+                            </div>
+                            <div class="guest-counter">
+                                <button type="button" class="counter-btn" data-type="pets" data-action="minus">−</button>
+                                <span id="petsCount">0</span>
+                                <button type="button" class="counter-btn" data-type="pets" data-action="plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="search-circle" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-
-
-                <span id="childrenCount">
-                    0
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="children"
-                    data-action="plus">
-
-                    +
-
-                </button>
-
-            </div>
-
+            </form>
         </div>
-
-
-        <!-- ================= INFANTS ================= -->
-
-        <div class="guest-row">
-
-            <div class="guest-info">
-
-                <strong>Infants</strong>
-
-                <small>
-                    Under 2
-                </small>
-
-            </div>
-
-
-            <div class="guest-counter">
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="infants"
-                    data-action="minus">
-
-                    −
-
-                </button>
-
-
-                <span id="infantsCount">
-                    0
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="infants"
-                    data-action="plus">
-
-                    +
-
-                </button>
-
-            </div>
-
+        <div id="desktopRight" class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings/new">Wanderlust your home</a>
+                </li>
+                <% if(!currUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"><b>Log in</b></a>
+                    </li>
+                <% } %>
+                <% if(currUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"><b>Log out</b></a>
+                    </li>
+                <% } %>
+            </ul>
         </div>
-
-
-        <!-- ================= PETS ================= -->
-
-        <div class="guest-row last-row">
-
-            <div class="guest-info">
-
-                <strong>Pets</strong>
-
-                <small class="service-animal">
-                    Bringing a service animal?
-                </small>
-
-            </div>
-
-
-            <div class="guest-counter">
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="pets"
-                    data-action="minus">
-
-                    −
-
-                </button>
-
-
-                <span id="petsCount">
-                    0
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-btn"
-                    data-type="pets"
-                    data-action="plus">
-
-                    +
-
-                </button>
-
-            </div>
-
+        <div class="collapse mobile-menu" id="mobileMenu">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings">Explore</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/listings/new">Wanderlust Your home</a>
+                </li>
+                <% if(!currUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"><b>Log In</b></a>
+                    </li>
+                <% } %>
+                <% if(currUser) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"><b>Log Out</b></a>
+                    </li>
+                <% } %>
+            </ul>
         </div>
-
     </div>
-
-</div>
-
-
-        <!-- =================================
-             SEARCH BUTTON
-        ================================== -->
-
-        <button
-          class="search-circle"
-          type="submit">
-
-          <i class="fa-solid fa-magnifying-glass"></i>
-
-        </button>
-
-
-      </form>
-
-    </div>
-
-
-    <!-- =====================================
-         RIGHT NAVBAR
-    ====================================== -->
-
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNavRight">
-
-      <ul class="navbar-nav ms-auto">
-
-
-        <!-- Airbnb your home -->
-
-        <li class="nav-item">
-
-          <a
-            class="nav-link"
-            href="/listings/new">
-
-            Airbnb your home
-
-          </a>
-
-        </li>
-
-
-        <!-- =================================
-             NOT LOGGED IN
-        ================================== -->
-
-        <% if(!currUser) { %>
-
-
-          <!-- Sign up -->
-
-          <li class="nav-item">
-
-            <a
-              class="nav-link"
-              href="/signup">
-
-              <b>
-                Sign up
-              </b>
-
-            </a>
-
-          </li>
-
-
-          <!-- Log in -->
-
-          <li class="nav-item">
-
-            <a
-              class="nav-link"
-              href="/login">
-
-              <b>
-                Log in
-              </b>
-
-            </a>
-
-          </li>
-
-
-        <% } %>
-
-
-        <!-- =================================
-             LOGGED IN
-        ================================== -->
-
-        <% if(currUser) { %>
-
-          <li class="nav-item">
-
-            <a
-              class="nav-link"
-              href="/logout">
-
-              <b>
-                Log out
-              </b>
-
-            </a>
-
-          </li>
-
-        <% } %>
-
-
-      </ul>
-
-    </div>
-
-
-  </div>
-
 </nav>
-
 <script>
-
-    let adults = 7;
-    let children = 0;
-    let infants = 0;
-    let pets = 0;
-
-    // Get elements
-    const adultsCount = document.getElementById("adultsCount");
-    const childrenCount = document.getElementById("childrenCount");
-    const infantsCount = document.getElementById("infantsCount");
-    const petsCount = document.getElementById("petsCount");
-
-    const guestSummary = document.getElementById("guestSummary");
-
-
-    // Function to update all numbers
-    function updateGuests() {
-
-        adultsCount.innerText = adults;
-        childrenCount.innerText = children;
-        infantsCount.innerText = infants;
-        petsCount.innerText = pets;
-
-
-        // Total guests
-        let totalGuests = adults + children;
-
-
-        if (totalGuests === 1) {
-
-            guestSummary.innerText = "1 guest";
-
-        } else {
-
-            guestSummary.innerText = totalGuests + " guests";
-
-        }
+let adults = 7;
+let children = 0;
+let infants = 0;
+let pets = 0;
+const adultsCount = document.getElementById("adultsCount");
+const childrenCount = document.getElementById("childrenCount");
+const infantsCount = document.getElementById("infantsCount");
+const petsCount = document.getElementById("petsCount");
+const guestSummary = document.getElementById("guestSummary");
+function updateGuests() {
+    adultsCount.innerText = adults;
+    childrenCount.innerText = children;
+    infantsCount.innerText = infants;
+    petsCount.innerText = pets;
+    let totalGuests = adults + children;
+    if(totalGuests === 1) {
+        guestSummary.innerText = "1 guest";
+    } else {
+        guestSummary.innerText = totalGuests + " guests";
     }
-
-
-    // All + and - buttons
-    document.querySelectorAll(".counter-btn").forEach(button => {
-
-        button.addEventListener("click", function(event) {
-
-            // Don't close dropdown
-            event.stopPropagation();
-
-
-            const type = this.dataset.type;
-            const action = this.dataset.action;
-
-
-            // Adults
-            if (type === "adults") {
-
-                if (action === "plus") {
-
-                    adults++;
-
-                } else if (action === "minus" && adults > 0) {
-
-                    adults--;
-
-                }
-
-            }
-
-
-            // Children
-            if (type === "children") {
-
-                if (action === "plus") {
-
-                    children++;
-
-                } else if (action === "minus" && children > 0) {
-
-                    children--;
-
-                }
-
-            }
-
-
-            // Infants
-            if (type === "infants") {
-
-                if (action === "plus") {
-
-                    infants++;
-
-                } else if (action === "minus" && infants > 0) {
-
-                    infants--;
-
-                }
-
-            }
-
-
-            // Pets
-            if (type === "pets") {
-
-                if (action === "plus") {
-
-                    pets++;
-
-                } else if (action === "minus" && pets > 0) {
-
-                    pets--;
-
-                }
-
-            }
-
-
-            // Update screen
-            updateGuests();
-
-        });
-
+}
+document.querySelectorAll(".counter-btn").forEach(button => {
+    button.addEventListener("click", function(event) {
+        event.stopPropagation();
+        const type = this.dataset.type;
+        const action = this.dataset.action;
+        if(type === "adults") {
+            if(action === "plus") adults++;
+            else if(action === "minus" && adults > 0) adults--;
+        }
+        if(type === "children") {
+            if(action === "plus") children++;
+            else if(action === "minus" && children > 0) children--;
+        }
+        if(type === "infants") {
+            if(action === "plus") infants++;
+            else if(action === "minus" && infants > 0) infants--;
+        }
+        if(type === "pets") {
+            if(action === "plus") pets++;
+            else if(action === "minus" && pets > 0) pets--;
+        }
+        updateGuests();
     });
-
-
-    // Initial display
-    updateGuests();
-
+});
+updateGuests();
 </script>
